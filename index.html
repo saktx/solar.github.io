@@ -162,19 +162,21 @@
     <p class="para">
       For sub-net S<sub>αk</sub> we compute features <code>f<sub>αk</sub> = S<sub>αk</sub>(x)</code>, and logits:
     </p>
-    <pre><code>z<sub>αk</sub> = C<sub>αk</sub>(f<sub>αk</sub>)</code></pre>
+    <img src="static/images/equ1.PNG"
+     style="margin:14px 0; border-radius:8px;">
 
     <p>
       Standard cross-entropy:
     </p>
-       <img src="static/images/equ1.PNG"
+      <img src="static/images/equ2.PNG"
      style="margin:14px 0; border-radius:8px;">
     <pre><code>where p = softmax(z)</code></pre>
 
     <p>
       For hybrid adversarial training (OATS style), SOL supports the hybrid loss:
     </p>
-    <pre><code>L = sum_{α in W} ( (1 - λ) * L_CE^{(α)} + λ * L_ADV^{(α)} )</code></pre>
+    <img src="static/images/equ3.PNG"
+     style="margin:14px 0; border-radius:8px;">
 
     <p>
       Here <code>L_ADV</code> is computed using PGD adversarial examples (e.g. 7-step PGD with &epsilon; = 8/255 as in the paper).

@@ -7,17 +7,42 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        body { font-family: Arial, sans-serif; margin:0; padding:0; line-height:1.6; background:#fafafa; }
-        header { text-align:center; padding:60px 20px; background:#111; color:white; }
+        body { font-family: Arial, sans-serif; margin:0; padding:0; line-height:1.6; background:#E3E3E3; }
+        header { text-align:center; padding:60px 20px; background:#1B3C53; color:white; }
         h1 { font-size:42px; margin-bottom:10px; }
-        h2 { border-bottom:2px solid #ddd; padding-bottom:5px; }
-        .authors { font-size:18px; margin-top:10px; }
-        .container { max-width:900px; margin:auto; padding:30px 20px; background:white; }
+        h2 { border-bottom:2px solid #456882; padding-bottom:5px; }
+        .authors { font-size:18px; margin-top:30px; }
+        .container { max-width:1000px; margin:auto; padding:30px 20px; background:white; }
         .section { margin-bottom:50px; }
         .btn { display:inline-block; padding:10px 20px; background:#0077ff; color:white; border-radius:6px; margin:5px; text-decoration:none; }
         .btn:hover { background:#0059c9; }
         img { max-width:100%; border-radius:8px; margin:15px 0; }
         footer { text-align:center; padding:20px; background:#111; color:white; margin-top:40px; }
+        .heading{
+            color: #1B3C53;
+        }
+        
+        .pretty-link {
+            color: #0077b5;              /* text color */
+            text-decoration: none;    /* remove underline */
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        .pretty-link:hover {
+        color: #a59595;        /* LinkedIn blue on hover */
+        text-decoration: underline;
+        }
+        .para{
+            text-align: justify;
+            color: #4c4545;
+        }
+        .note{background:#fffbe6;border-left:4px solid #ffd24d;padding:12px;border-radius:6px;margin:12px 0;}
+        .code-block{background:#0b0b0b;color:#e6e6e6;padding:12px;border-radius:6px;overflow:auto;}
+        .muted{color:var(--muted); font-size:14px;}
+        .small{font-size:13px;}
+
+
     </style>
 </head>
 
@@ -28,12 +53,29 @@
     <h2>Switchable Output Layer for Accuracy and Robustness in Once-for-All Training</h2>
 
     <div class="authors">
-        <p><b>Shaharyar Ahmed Khan Tareen</b>, Lei Fan, Xiaojing Yuan, Qin Lin, Bin Hu</p>
-        <p>University of Houston</p>
+        <p>
+            <b>
+                <a href="https://www.linkedin.com/in/stareen/" class="pretty-link" target="_blank" rel="noopener noreferrer">
+                Shaharyar Ahmed Khan Tareen  
+                </a>
+            </b>&nbsp;
+                <a href="https://www.linkedin.com/in/lei-fan-b1857a23/" class="pretty-link" target="_blank" rel="noopener noreferrer">
+                Lei Fan   
+                </a>&nbsp;
+                <a href="https://www.linkedin.com/in/xiaojing-yuan-36970232/" class="pretty-link" target="_blank" rel="noopener noreferrer">
+                Xiaojing Yuan   
+                </a>&nbsp;
+                <a href="https://www.linkedin.com/in/qin-lin-6a104861" class="pretty-link" target="_blank" rel="noopener noreferrer">
+                Qin Lin  
+                </a>&nbsp;
+                <a href="https://www.linkedin.com/in/bin-hu-a338902b/" class="pretty-link" target="_blank" rel="noopener noreferrer">
+                Bin Hu
+                </a></p>
+        <p>University of Houston<br> Houston, TX, USA</p>
     </div>
 
     <div>
-        <a class="btn" href="2509.16833v1.pdf">📄 Paper (PDF)</a>
+        <a class="btn" href="https://arxiv.org/pdf/2509.16833">📄 Paper (PDF)</a>
         <a class="btn" href="https://arxiv.org/abs/2509.16833">arXiv</a>
         <a class="btn" href="https://github.com/sakt90/SOLAR">💻 Code</a>
     </div>
@@ -44,88 +86,232 @@
 
     <!-- ABSTRACT -->
     <div class="section">
-        <h2>Abstract</h2>
-        <p>
-        Once-for-All (OFA) training enables a single super-network to generate multiple sub-networks
-        with different accuracy, robustness, and model-size trade-offs. However, when many sub-nets
-        share the same output layer, representational interference occurs, harming performance and
-        calibration.
+        <h2 class="heading">Abstract</h2>
+        <p class="para">
+        Once-for-All (OFA) training enables a single super-net
+        to generate multiple sub-nets tailored to diverse deployment scenarios, 
+        supporting flexible trade-offs among accuracy, robustness, and model-size 
+        without retraining. However, as the number of supported sub-nets increases, 
+        excessive parameter sharing in the backbone limits representational capacity, 
+        leading to degraded calibration and
+        reduced overall performance. To address this, we propose <b>SOLAR (Switchable 
+        Output Layer for Accuracy and
+        Robustness in Once-for-All Training)</b>, a simple yet effective
+        technique that assigns each sub-net a separate classification head. By decoupling the logit learning process across
+        sub-nets, the Switchable Output Layer (SOL) reduces representational interference and improves optimization, 
+        without altering the shared backbone.<br><br> We evaluate SOLAR on five datasets (SVHN, CIFAR-10, STL-10, CIFAR-100, and
+        TinyImageNet) using four super-net backbones (ResNet-34,
+        WideResNet-16-8, WideResNet-40-2, and MobileNetV2) for
+        two OFA training frameworks (OATS and SNNs). Experiments show that
+         SOLAR outperforms the baseline methods: compared to OATS, it improves accuracy of sub-nets
+        up to <b>1.26%, 4.71%, 1.67%, and 1.76%</b>, and robustness up
+        to <b>9.01%, 7.71%, 2.72%, and 1.26% </b>on SVHN, CIFAR-10,
+        STL-10, and CIFAR-100, respectively. Compared to SNNs,
+        it improves TinyImageNet accuracy by up to 2.93%, 2.34%,
+        and 1.35% using ResNet-34, WideResNet-16-8, and MobileNetV2 backbones (with 8 sub-nets), respectively.
 
-        We propose <b>SOLAR (Switchable Output Layer)</b>, a simple but powerful modification that
-        assigns each sub-net a separate classification head. SOLAR eliminates logit interference,
-        improves optimization stability, and significantly boosts both accuracy and adversarial
-        robustness across all evaluated datasets and backbones.
         </p>
     </div>
 
 
-    <!-- MOTIVATION -->
-    <div class="section">
-        <h2>Motivation: The Output-Layer Bottleneck</h2>
-        <p>
-        Existing OFA frameworks such as OATS and SNNs use Switchable BatchNorm to separate
-        intermediate feature statistics across widths. However, they still share a single
-        classification layer, which forces incompatible representations into one output space.
-        This results in degraded performance, especially for smaller sub-nets.
-        </p>
+   <!-- Motivation -->
+  <section class="card">
+    <h2 class="heading">Motivation</h2>
+    <p class="para">
+      OFA frameworks (example: SNNs, OATS) successfully decouple intermediate statistics using switchable batch normalization (SBN / SDBN).
+      However, the usual design still uses a <strong>single, shared output layer</strong> (classification head) for all sub-nets.
+      Sub-nets of different widths produce feature distributions with very different statistics; forcing them to share the same logit head
+      causes conflicting gradients and representational interference. This becomes more severe as the number of sub-nets grows.
+    </p>
 
-        <img src="assets/bn_stats.png" alt="BN statistics visualization">
-        <p style="text-align:center;">Shared output layer causes logit interference across sub-nets.</p>
+    <div class="note">
+      <strong>Consequence:</strong> smaller sub-nets or those with different capacities are unable to learn sub-net specific output representations,
+      which degrades accuracy, calibration, and robustness.
     </div>
 
+    <img src="static/images/output-interference.PNG"
+     alt="Shared output layer interference visualization"
+     style="margin:14px 0; border-radius:8px;">
+    <p class="para">
+    Shared output layer forces incompatible sub-net feature distributions into one logit space.
+    </p>
 
-    <!-- METHOD -->
-    <div class="section">
-        <h2>Method: Switchable Output Layer (SOL)</h2>
-        <p>
-        SOLAR introduces a lightweight technique:
-        </p>
-        <ul>
-            <li>Each sub-net receives its own classification head</li>
-            <li>Only the active head is updated during training</li>
-            <li>No additional FLOPs during inference</li>
-            <li>Minimal parameter increase (<1–3% for most models)</li>
-        </ul>
+  </section>
 
-        <img src="assets/solar_method.png" alt="SOLAR architecture diagram">
-        <p style="text-align:center;">SOL decouples logit learning for each sub-net.</p>
-    </div>
+  <!-- What SOLAR does -->
+  <section class="card" id="method">
+    <h2 class="heading">Method — Switchable Output Layer (SOL)</h2>
 
+    <h3>Core idea</h3>
+    <p class="para">
+      Instead of using one shared classification head C for all sub-nets, SOL adds one head per sub-net: <code>C_{αk}</code>.
+      When training / evaluating a sub-net with width multiplier <code>αk</code>, the model uses only <code>C_{αk}</code>.
+      During backpropagation only the active head is updated. The shared encoder (backbone) remains shared.
+    </p>
 
-    <!-- RESULTS -->
-    <div class="section">
-        <h2>Results</h2>
-        <p>
-        SOLAR consistently improves accuracy and PGD robustness across:
-        </p>
-        <ul>
-            <li>SVHN, CIFAR-10, STL-10, CIFAR-100, TinyImageNet</li>
-            <li>ResNet-34, WRN-16-8, WRN-40-2, MobileNetV2</li>
-            <li>OATS and SNN frameworks</li>
-        </ul>
+    
+     <img src="static/images/method.PNG"
+     style="margin:14px 0; border-radius:8px;">
+    <p class="para">
+     OATS framework with Switchable Dual Batch Norm (SDBN) layers and Switchable Output Layer (SOL).
+     Value of α indicates the width fraction for the corresponding sub-net in the backbone that is activated during training or inference.
+     Convolutional layers have shared parameters whereas SDBN and SOL have separate parameters for each sub-net.
+    </p>
 
-        <img src="assets/svhn_results.png" alt="SVHN results">
-        <img src="assets/cifar10_results.png" alt="CIFAR-10 results">
-        <img src="assets/tinyimagenet_results.png" alt="TinyImageNet results">
-    </div>
+    <h3>Formalization — logits & loss</h3>
+    <p class="para">
+      For sub-net S<sub>αk</sub> we compute features <code>f<sub>αk</sub> = S<sub>αk</sub>(x)</code>, and logits:
+    </p>
+    <pre><code>z<sub>αk</sub> = C<sub>αk</sub>(f<sub>αk</sub>)</code></pre>
 
+    <p>
+      Standard cross-entropy:
+    </p>
+    <pre><code>L_CE = - log p_{y},  where p = softmax(z)</code></pre>
 
-    <!-- CONCLUSION -->
-    <div class="section">
-        <h2>Conclusion</h2>
-        <p>
-        SOLAR resolves a long-standing bottleneck in OFA training by isolating sub-net output
-        representations without increasing computational cost. Its simplicity, generality, and strong
-        experimental results make it a practical upgrade for all OFA-based frameworks.
-        </p>
-    </div>
+    <p>
+      For hybrid adversarial training (OATS style), SOL supports the hybrid loss:
+    </p>
+    <pre><code>L = sum_{α in W} ( (1 - λ) * L_CE^{(α)} + λ * L_ADV^{(α)} )</code></pre>
 
-</div>
+    <p>
+      Here <code>L_ADV</code> is computed using PGD adversarial examples (e.g. 7-step PGD with &epsilon; = 8/255 as in the paper).
+    </p>
+
+    <h3>Algorithm (high level)</h3>
+    <img src="static/images/algo.PNG"
+     style="margin:14px 0; border-radius:8px;">
 
 
-<footer>
-    <p>© 2025 – SOLAR Project | University of Houston</p>
-</footer>
+    <h3>Why it helps</h3>
+    <ul class="para">
+      <li>Decouples logit learning so each sub-net can adapt its output layer to its feature distribution.</li>
+      <li>Reduces interference at the final layer; gradients no longer compete through a single shared head.</li>
+      <li>Negligible inference overhead — only the active head is used per forward pass (FLOPs unchanged compared to baseline).</li>
+    </ul>
+  </section>
+
+   <!-- Experiments -->
+  <section class="card" id="experiments">
+    <h2 class="heading">Experiments & key results</h2>
+
+    <p>Datasets & backbones used in the paper</p>
+    <ul class="para">
+      <li>Datasets: SVHN, CIFAR-10, STL-10, CIFAR-100, TinyImageNet</li>
+      <li>Backbones: WideResNet-16-8, ResNet-34, WideResNet-40-2, MobileNetV2</li>
+      <li>Frameworks augmented with SOL: OATS and SNNs (Slimmable Neural Networks)</li>
+    </ul>
+
+    <h3>Representative numerical gains (reported)</h3>    
+    
+     <img src="static/images/table 1.PNG"
+     style="margin:14px 0; border-radius:8px;">
+    <p class="para small">
+    Comparison of OATS and OATS-SOL on SVHN dataset using WideResNet-16-8 backbone packed with 8 sub-nets.
+    OATS-SOL provides superior performance than OATS for all the sub-nets in terms of accuracy and PGD-7 robustness.
+    </p>
+
+    <img src="static/images/table 2.PNG"
+     style="margin:14px 0; border-radius:8px;">
+    <p class="para small">
+    Comparison of OATS and OATS-SOL on CIFAR-10 dataset using ResNet-34 backbone (with 8 sub-nets). OATS-SOL
+    provides superior performance than OATS for all the sub-nets in terms of accuracy and PGD-7 based robustness.
+    </p>
+
+    <img src="static/images/table 3.PNG"
+     style="margin:14px 0; border-radius:8px;">
+    <p class="para small">
+     Comparison of OATS and OATS-SOL on STL-10 dataset using WideResNet-40-2 as backbone with 4 sub-nets.
+    </p>
+
+    <img src="static/images/table 4.PNG"
+     style="margin:14px 0; border-radius:8px;">
+    <p class="para small">
+    Comparison of OATS and OATS-SOL on CIFAR-100 dataset using ResNet-34 as backbone with 4 sub-nets.
+    </p>
+
+    <img src="static/images/table 5.PNG"
+     style="margin:14px 0; border-radius:8px;">
+    <p class="para small">
+    Accuracy of SNN and SNN-SOL based Sub-Nets on CIFAR-10 for backbones packed with 16 Sub-Nets.
+    </p>
+
+    <img src="static/images/table 6.PNG"
+     style="margin:14px 0; border-radius:8px;">
+    <p class="para small">
+     Accuracy of SNN and SNN-SOL on CIFAR-100 for backbones with 8 sub-nets.
+    </p>
+
+    <img src="static/images/table 7.PNG"
+     style="margin:14px 0; border-radius:8px;">
+    <p class="para small">
+     Accuracy of SNN and SNN-SOL on TinyImageNet for backbones with 8 sub-nets.
+    </p>
+    
+    <img src="static/images/table 8.PNG"
+     style="margin:14px 0; border-radius:8px;">
+    <p class="para small">
+     Parameter counts of SNN vs. SNN-SOL backbones packed with 8, 32, and 64 sub-nets for CIFAR-10 dataset.
+    </p>
+
+    <img src="static/images/table 9.PNG"
+     style="margin:14px 0; border-radius:8px;">
+    <p class="para small">
+     Identical FLOPs of SNN and SNN-SOL sub-nets
+(with different widths), show that SOL adds no training overhead.
+    </p>
+
+    <img src="static/images/table 10.PNG"
+     style="margin:14px 0; border-radius:8px;">
+    <p class="para small">
+     Performance of different sub-nets after fine-tuning.
+    </p>
+
+    <h3>Training & evaluation notes</h3>
+    <ul class="para">
+      <li>Adversarial training uses 7-step PGD (L∞, &epsilon;=8/255, step=2/255) for robustness evaluation — same as OATS baseline.</li>
+      <li>Hybrid λ values used for training: sampled from S = {0.0, 0.1, 0.2, 0.3, 0.4, 1.0}.</li>
+      <li>Optimization: SGD with momentum 0.9, cosine annealing LR; reported results are best-of-runs across seeds.</li>
+    </ul>
+  </section>
+
+    <!-- Conclusion -->
+  <section class="card" id="conclusion">
+    <h2 class="heading">Conclusion & future directions</h2>
+    <p class="para">
+      We introduce <b>Switchable Output Layer (SOL)</b> to enhance
+the performance and robustness of Once-for-All (OFA)
+training frameworks. SOL assigns independent classification heads to the sub-nets in the super-net backbone,
+which decouples their logit learning processes, mitigating
+the competition at the shared output layer—a bottleneck
+limiting the sub-net accuracy, robustness, and optimization.
+Extensive experiments on two different baseline methods:
+Once-for-All Adversarial Training and Slimming (OATS)
+and Slimmable Neural Networks (SNNs), across multiple
+datasets and diverse super-net architectures, demonstrate
+that incorporation of SOL consistently improves performance of sub-nets without introducing additional training
+overhead or complexity. SOL generalizes well, which highlights its potential as an effective enhancement for the OFA
+frameworks, encouraging flexible, scalable, and reliable deployment of specialized models across a wider range of
+devices and constraints. For future work, we aim to extend SOL to more OFA frameworks
+and conduct large-scale evaluations on the ImageNet-1K
+dataset. In addition, we intend to study the impact of
+layer normalization on reducing representational interference across the sub-nets.
+    </p>
+
+
+<!-- Repro & citation -->
+  <section>
+    <h2>BibTeX</h2>
+    <pre><code>@article{park2021nerfies
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz,<br> Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+
+<p>
+    Website borrowed from NeRFies under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+</p>
 
 </body>
 </html>

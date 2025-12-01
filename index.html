@@ -133,7 +133,7 @@
      alt="Shared output layer interference visualization"
      style="margin:14px auto; border-radius:8px; display:block;">
     <p class="para" style="text-align:center">
-    Shared output layer forces incompatible sub-net feature distributions into one logit space.
+    Figure.1 Shared output layer forces incompatible sub-net feature distributions into one logit space.
     </p>
 
   </section>
@@ -153,7 +153,7 @@
      <img src="static/images/method.PNG"
      style="margin:14px auto; border-radius:8px; display:block;">
     <p class="para" style="text-align:center">
-     OATS framework with Switchable Dual Batch Norm (SDBN) layers and Switchable Output Layer (SOL).
+     Figure.2 OATS framework with Switchable Dual Batch Norm (SDBN) layers and Switchable Output Layer (SOL).
      Value of α indicates the width fraction for the corresponding sub-net in the backbone that is activated during training or inference.
      Convolutional layers have shared parameters whereas SDBN and SOL have separate parameters for each sub-net.
     </p>
@@ -180,7 +180,7 @@
 
     <h3>OATS-SOL Algorithm</h3>
     <img src="static/images/algo.PNG"
-     style="margin:14px 0; border-radius:8px;">
+     style="margin:14px auto; border-radius:8px; display:block;">
 
 
     <h3>Why SOLAR Outperforms?</h3>
@@ -205,66 +205,66 @@
     <h3>Results</h3>    
     
      <img src="static/images/table 1.PNG"
-     style="margin:14px 0; border-radius:8px;">
-    <p class="para small">
-    Comparison of OATS and OATS-SOL on SVHN dataset using WideResNet-16-8 backbone packed with 8 sub-nets.
+     style="margin:14px auto; border-radius:8px; display:block;">
+    <p class="para small" style="text-align:center">
+    Figure.3 Comparison of OATS and OATS-SOL on SVHN dataset using WideResNet-16-8 backbone packed with 8 sub-nets.
     OATS-SOL provides superior performance than OATS for all the sub-nets in terms of accuracy and PGD-7 robustness.
     </p>
 
     <img src="static/images/table 2.PNG"
-     style="margin:14px 0; border-radius:8px;">
-    <p class="para small">
-    Comparison of OATS and OATS-SOL on CIFAR-10 dataset using ResNet-34 backbone (with 8 sub-nets). OATS-SOL
+     style="margin:14px auto; border-radius:8px; display:block;">
+    <p class="para small" style="text-align:center">
+    Figure.4 Comparison of OATS and OATS-SOL on CIFAR-10 dataset using ResNet-34 backbone (with 8 sub-nets). OATS-SOL
     provides superior performance than OATS for all the sub-nets in terms of accuracy and PGD-7 based robustness.
     </p>
 
     <img src="static/images/table 3.PNG"
-     style="margin:14px 0; border-radius:8px;">
-    <p class="para small">
-     Comparison of OATS and OATS-SOL on STL-10 dataset using WideResNet-40-2 as backbone with 4 sub-nets.
+     style="margin:14px auto; border-radius:8px; display:block;">
+    <p class="para small" style="text-align:center">
+     Figure.5 Comparison of OATS and OATS-SOL on STL-10 dataset using WideResNet-40-2 as backbone with 4 sub-nets.
     </p>
 
     <img src="static/images/table 4.PNG"
-     style="margin:14px 0; border-radius:8px;">
-    <p class="para small">
-    Comparison of OATS and OATS-SOL on CIFAR-100 dataset using ResNet-34 as backbone with 4 sub-nets.
+     style="margin:14px auto; border-radius:8px; display:block;">
+    <p class="para small" style="text-align:center">
+    Figure.6 Comparison of OATS and OATS-SOL on CIFAR-100 dataset using ResNet-34 as backbone with 4 sub-nets.
     </p>
 
     <img src="static/images/table 5.PNG"
-     style="margin:14px 0; border-radius:8px;">
-    <p class="para small">
-    Accuracy of SNN and SNN-SOL based Sub-Nets on CIFAR-10 for backbones packed with 16 Sub-Nets.
+     style="margin:14px auto; border-radius:8px; display:block;">
+    <p class="para small" style="text-align:center">
+    Table.1 Accuracy of SNN and SNN-SOL based Sub-Nets on CIFAR-10 for backbones packed with 16 Sub-Nets.
     </p>
 
     <img src="static/images/table 6.PNG"
-     style="margin:14px 0; border-radius:8px;">
-    <p class="para small">
-     Accuracy of SNN and SNN-SOL on CIFAR-100 for backbones with 8 sub-nets.
+     style="margin:14px auto; border-radius:8px; display:block;">
+    <p class="para small" style="text-align:center">
+     Table.2 Accuracy of SNN and SNN-SOL on CIFAR-100 for backbones with 8 sub-nets.
     </p>
 
     <img src="static/images/table 7.PNG"
-     style="margin:14px 0; border-radius:8px;">
-    <p class="para small">
-     Accuracy of SNN and SNN-SOL on TinyImageNet for backbones with 8 sub-nets.
+     style="margin:14px auto; border-radius:8px; display:block;">
+    <p class="para small" style="text-align:center">
+     Table.3 Accuracy of SNN and SNN-SOL on TinyImageNet for backbones with 8 sub-nets.
     </p>
     
     <img src="static/images/table 8.PNG"
-     style="margin:14px 0; border-radius:8px;">
-    <p class="para small">
-     Parameter counts of SNN vs. SNN-SOL backbones packed with 8, 32, and 64 sub-nets for CIFAR-10 dataset.
+     style="margin:14px auto; border-radius:8px; display:block;">
+    <p class="para small" style="text-align:center">
+     Table.4 Parameter counts of SNN vs. SNN-SOL backbones packed with 8, 32, and 64 sub-nets for CIFAR-10 dataset.
     </p>
 
     <img src="static/images/table 9.PNG"
-     style="margin:14px 0; border-radius:8px;">
-    <p class="para small">
-     Identical FLOPs of SNN and SNN-SOL sub-nets
+     style="margin:14px auto; border-radius:8px; display:block;">
+    <p class="para small" style="text-align:center">
+     Table.5 Identical FLOPs of SNN and SNN-SOL sub-nets
 (with different widths), show that SOL adds no training overhead.
     </p>
 
     <img src="static/images/table 10.PNG"
-     style="margin:14px 0; border-radius:8px;">
-    <p class="para small">
-     Performance of different sub-nets after fine-tuning.
+     style="margin:14px auto; border-radius:8px; display:block;">
+    <p class="para small" style="text-align:center">
+     Table.6 Performance of different sub-nets after fine-tuning.
     </p>
 
     <h3>Training & Evaluation Highlights:</h3>

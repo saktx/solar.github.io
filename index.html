@@ -142,7 +142,7 @@
   <section class="card" id="method">
     <h2 class="heading">Method — Switchable Output Layer (SOL)</h2>
 
-    <h3>Core idea</h3>
+    <h3>Core Idea</h3>
     <p class="para">
       Instead of using one shared classification head C for all sub-nets, SOL adds one head per sub-net: <code>C_{αk}</code>.
       When training / evaluating a sub-net with width multiplier <code>αk</code>, the model uses only <code>C_{αk}</code>.
@@ -158,7 +158,7 @@
      Convolutional layers have shared parameters whereas SDBN and SOL have separate parameters for each sub-net.
     </p>
 
-    <h3>Formalization — logits & loss</h3>
+    <h3>Formalization — Logits & Loss</h3>
     <p class="para">
       For sub-net S<sub>αk</sub> we compute features <code>f<sub>αk</sub> = S<sub>αk</sub>(x)</code>, and logits:
     </p>
@@ -178,31 +178,31 @@
       Here <code>L_ADV</code> is computed using PGD adversarial examples (e.g. 7-step PGD with &epsilon; = 8/255 as in the paper).
     </p>
 
-    <h3>Algorithm (high level)</h3>
+    <h3>OATS-SOL Algorithm</h3>
     <img src="static/images/algo.PNG"
      style="margin:14px 0; border-radius:8px;">
 
 
-    <h3>Why it helps</h3>
+    <h3>Why SOLAR Outperforms?</h3>
     <ul class="para">
       <li>Decouples logit learning so each sub-net can adapt its output layer to its feature distribution.</li>
-      <li>Reduces interference at the final layer; gradients no longer compete through a single shared head.</li>
+      <li>Reduces interference at the final layer, gradients no longer compete through a single shared head.</li>
       <li>Negligible inference overhead — only the active head is used per forward pass (FLOPs unchanged compared to baseline).</li>
     </ul>
   </section>
 
    <!-- Experiments -->
   <section class="card" id="experiments">
-    <h2 class="heading">Experiments & key results</h2>
+    <h2 class="heading">Experiments & Key Results</h2>
 
-    <p>Datasets & backbones used in the paper</p>
+    <p>Datasets & Backbones used:</p>
     <ul class="para">
       <li>Datasets: SVHN, CIFAR-10, STL-10, CIFAR-100, TinyImageNet</li>
       <li>Backbones: WideResNet-16-8, ResNet-34, WideResNet-40-2, MobileNetV2</li>
-      <li>Frameworks augmented with SOL: OATS and SNNs (Slimmable Neural Networks)</li>
+      <li>OFA Frameworks augmented with SOL: OATS (Once-for-All Adversarial Training and Slimming) and SNNs (Slimmable Neural Networks)</li>
     </ul>
 
-    <h3>Representative numerical gains (reported)</h3>    
+    <h3>Results</h3>    
     
      <img src="static/images/table 1.PNG"
      style="margin:14px 0; border-radius:8px;">
@@ -267,7 +267,7 @@
      Performance of different sub-nets after fine-tuning.
     </p>
 
-    <h3>Training & evaluation notes</h3>
+    <h3>Training & Evaluation Highlights:</h3>
     <ul class="para">
       <li>Adversarial training uses 7-step PGD (L∞, &epsilon;=8/255, step=2/255) for robustness evaluation — same as OATS baseline.</li>
       <li>Hybrid λ values used for training: sampled from S = {0.0, 0.1, 0.2, 0.3, 0.4, 1.0}.</li>
@@ -277,7 +277,7 @@
 
     <!-- Conclusion -->
   <section class="card" id="conclusion">
-    <h2 class="heading">Conclusion & future directions</h2>
+    <h2 class="heading">Conclusion & Future Directions</h2>
     <p class="para">
       We introduce <b>Switchable Output Layer (SOL)</b> to enhance
 the performance and robustness of Once-for-All (OFA)
@@ -302,11 +302,12 @@ layer normalization on reducing representational interference across the sub-net
 <!-- Repro & citation -->
   <section>
     <h2>BibTeX</h2>
-    <pre><code>@article{park2021nerfies
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz,<br> Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
+    <pre><code>@inproceedings{tareen2026solar
+  title     = {SOLAR: Switchable Output Layer for Accuracy and Robustness in Once-for-All Training},
+  author    = {Tareen★, Shaharyar Ahmed Khan and Fan, Lei and Yuan, Xiaojing and Lin, Qin and Hu, Bin},
+  booktitle = {Proc. IEEE/CVF Winter Conf. on Applications of Computer Vision (Round 2 New Submission Acceptance Rate: 26.88%)},
+  year      = {2026},
+  address   = {Tucson, Arizona, USA},
 }</code></pre>
 
 <p>

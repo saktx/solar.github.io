@@ -1,6 +1,6 @@
 # Nerfies
 
-This is the repository that contains source code for the [SOLAR Website]([https://solar.github.io](https://saktx.github.io/solar.github.io/)).
+This is the repository that contains source code for the <a href="https://saktx.github.io/solar.github.io/">SOLAR Website</a>
 
 If you find Nerfies useful for your work please cite:
 ```
